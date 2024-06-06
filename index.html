@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <!-- Meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Track My Shows</title>
@@ -10,15 +11,15 @@
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <!-- Bootstrap Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- SASS style sheets -->
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="./styles.css">
-  <!-- font -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- alpine.js -->
+  <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Bootstrap JS Bundle (includes Popper.js for Bootstrap 5) -->
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -28,7 +29,7 @@
 
 <body>
 
-  <!-- nav bar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
     <div class="container-sm">
       <a class="navbar-brand" href="#">Track My Shows</a>
@@ -49,11 +50,11 @@
     </div>
   </nav>
 
-  <!-- Table -->
+  <!-- Table Section -->
   <section class="p-3">
-
     <div class="row mb-3">
       <div class="col-12">
+        <!-- Button to trigger modal -->
         <button class="btn btn-primary newForm" data-bs-toggle="modal" data-bs-target="#trackerForm">
           <i class="bi bi-plus-lg"></i> Log Watch Session
         </button>
@@ -61,6 +62,7 @@
     </div>
 
     <div class="col-12">
+      <!-- Table to display user information -->
       <table class="table table-striped table-hover mt-3 text-center table-bordered">
         <thead>
           <tr>
@@ -85,11 +87,15 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
+          <!-- Modal title -->
           <h4 class="modal-title" id="trackerFormLabel">Fill the Tracker Form</h4>
+          <!-- Close button -->
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <!-- Form to capture user input -->
           <form action="#" id="myForm">
+            <!-- Image uploader -->
             <div class="card imgholder">
               <label for="imgInput" class="upload">
                 <input type="file" name="" id="imgInput">
@@ -98,6 +104,7 @@
               <img src="./images/Profile Icon.webp" alt="" width="200" height="200">
             </div>
 
+            <!-- Input fields -->
             <div class="inputField">
               <div>
                 <label for="date"> Date: </label>
@@ -123,23 +130,23 @@
                   <option value="neutral">😐 Neutral</option>
                   <option value="guilty">😔 Guilty</option>
                   <option value="veryGuilty">😢 Very Guilty</option>
-                  </select>
+                </select>
               </div>
               <div>
                 <label for="entry">Write Entry:</label>
                 <input type="text" name="" id="entry" oninput="limitWords(this, 50)" minlength="0" maxlength="200">              
               </div>
             </div>
-            </form>
+          </form>
         </div>
 
+        <!-- Modal footer -->
         <div class="modal-footer">
           <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
         </div>
       </div>
     </div>
   </div>
-
 
 </body>
 

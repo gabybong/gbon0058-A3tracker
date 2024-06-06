@@ -1,27 +1,35 @@
+// Execute the following code when the DOM content is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
-    var form = document.getElementById("myForm"),
-        imgInput = document.querySelector(".imgholder img"), // Correctly targeting the img element within imgholder
-        file = document.getElementById("imgInput"),
-        date = document.getElementById("date"),
-        title = document.getElementById("title"),
-        goal = document.getElementById("goal"),
-        watched = document.getElementById("watched"),
-        mood = document.getElementById("mood"),
-        entry = document.getElementById("entry"),
-        submitBtn = document.querySelector(".submit"),
-        userInfo = document.getElementById("data"),
-        modal = document.getElementById("trackerForm"),
-        modalTitle = document.querySelector("#trackerForm .modal-title");
+    // Get references to various elements
+    var form = document.getElementById("myForm"), // Form element
+        imgInput = document.querySelector(".imgholder img"), // Image input element
+        file = document.getElementById("imgInput"), // File input element
+        date = document.getElementById("date"), // Date input element
+        title = document.getElementById("title"), // Title input element
+        goal = document.getElementById("goal"), // Goal input element
+        watched = document.getElementById("watched"), // Watched input element
+        mood = document.getElementById("mood"), // Mood input element
+        entry = document.getElementById("entry"), // Entry input element
+        submitBtn = document.querySelector(".submit"), // Submit button element
+        userInfo = document.getElementById("data"), // User information element
+        modal = document.getElementById("trackerForm"), // Modal element
+        modalTitle = document.querySelector("#trackerForm .modal-title"); // Modal title element
 
+    // Retrieve data from local storage or set to an empty array
     let getData = localStorage.getItem('showProfile') ? JSON.parse(localStorage.getItem('showProfile')) : [];
 
+    // Set variables for editing
     let isEdit = false, editId;
+
+    // Display user information
     displayInfo();
 
+    // Event listener for file input change
     file.onchange = function () {
         if (file.files[0].size < 1000000) {
             var fileReader = new FileReader();
 
+            // Read the uploaded file as a data URL
             fileReader.onload = function (e) {
                 var imgUrl = e.target.result;
                 console.log("Image URL:", imgUrl); // Debug log
@@ -29,16 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("Image src set to:", imgInput.src); // Debug log
             };
 
-            fileReader.readAsDataURL(file.files[0]);
+            fileReader.readAsDataURL(file.files[0]); // Read the file as a data URL
         } else {
-            alert("This file is too large!");
+            alert("This file is too large!"); // Alert the user if the file is too large
         }
     };
 
+    // Function to display user information
     function displayInfo() {
         // Clear the table body before appending new rows
         userInfo.innerHTML = "";
 
+        // Loop through each data element and create table rows
         getData.forEach((element, index) => {
             let createElement = `
                 <tr class="showDetails">
@@ -55,53 +65,57 @@ document.addEventListener("DOMContentLoaded", function () {
                     </td>
                 </tr>`;
 
-            userInfo.innerHTML += createElement;
+            userInfo.innerHTML += createElement; // Append the created element to the table
         });
     }
 
-    window.deleteInfo = function(index) { // Ensure deleteInfo is available in the global scope
+    // Function to delete user information
+    window.deleteInfo = function(index) {
         if (confirm("Are you sure you want to delete?")) {
-            getData.splice(index, 1);
-            localStorage.setItem("showProfile", JSON.stringify(getData));
-            displayInfo();
+            getData.splice(index, 1); // Remove the element from the array
+            localStorage.setItem("showProfile", JSON.stringify(getData)); // Update local storage
+            displayInfo(); // Re-display user information
         }
     }
 
+    // Event listener for form submission
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent the default form submission behavior
 
+        // Create an object with user information
         const information = {
-            picture: imgInput.src === undefined ? "./images/Profile Icon.webp" : imgInput.src,
-            showDate: date.value,
-            showTitle: title.value,
-            showGoal: goal.value,
-            showWatched: watched.value,
-            showMood: mood.value,
-            showEntry: entry.value
+            picture: imgInput.src === undefined ? "./images/Profile Icon.webp" : imgInput.src, // Image URL
+            showDate: date.value, // Date value
+            showTitle: title.value, // Title value
+            showGoal: goal.value, // Goal value
+            showWatched: watched.value, // Watched value
+            showMood: mood.value, // Mood value
+            showEntry: entry.value // Entry value
         };
 
+        // Add or update user information in the array
         if (!isEdit) {
-            getData.push(information);
+            getData.push(information); // Add new information
         } else {
-            isEdit = false;
-            getData[editId] = information;
+            isEdit = false; // Reset edit flag
+            getData[editId] = information; // Update existing information
         }
 
+        // Update local storage with the updated data
         localStorage.setItem('showProfile', JSON.stringify(getData));
-        console.log("Data saved to local storage:", getData); // Debug log
 
+        // Reset form fields
         submitBtn.innerText = "Submit";
         modalTitle.innerHTML = "Fill the Form";
-
-        displayInfo();
-
-        // Optionally reset the form after submission
         form.reset();
-        imgInput.src = "./images/Profile Icon.webp"; // Reset the image to default
+        imgInput.src = "./images/Profile Icon.webp";
 
         // Hide the modal
         modal.style.display = "none";
-        document.querySelector(".modal-backdrop").remove(); // Assuming you meant to remove the modal backdrop
+        document.querySelector(".modal-backdrop").remove();
+
+        // Re-display user information
+        displayInfo();
 
         // Log current local storage data
         console.log("Current local storage:", localStorage.getItem('showProfile'));
