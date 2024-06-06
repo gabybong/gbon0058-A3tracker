@@ -3,7 +3,7 @@
 ### Version Control
 
 ## Features
-- **hi** : thi si smy name
+- **hi** : this is my name
 
 ## Usage
 

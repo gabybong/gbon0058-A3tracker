@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track My Shows</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- SASS style sheets -->
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./styles.css">
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Bootstrap JS Bundle (includes Popper.js for Bootstrap 5) -->
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="./app.js"></script>
+</head>
+
+<body>
+
+  <!-- nav bar -->
+  <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+    <div class="container-sm">
+      <a class="navbar-brand" href="#">Track My Shows</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">History</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Table -->
+  <section class="p-3">
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <button class="btn btn-primary newForm" data-bs-toggle="modal" data-bs-target="#trackerForm">
+          <i class="bi bi-plus-lg"></i> Log Watch Session
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <table class="table table-striped table-hover mt-3 text-center table-bordered">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Goal</th>
+            <th>Watched</th>
+            <th>Mood</th>
+            <th>Entry</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="data"> </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Modal Pop-up Form -->
+  <div class="modal fade" id="trackerForm" tabindex="-1" aria-labelledby="trackerFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="trackerFormLabel">Fill the Tracker Form</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="#" id="myForm">
+            <div class="card imgholder">
+              <label for="imgInput" class="upload">
+                <input type="file" name="" id="imgInput">
+                <i class="bi bi-plus-circle"></i>
+              </label>
+              <img src="./images/Profile Icon.webp" alt="" width="200" height="200">
+            </div>
+
+            <div class="inputField">
+              <div>
+                <label for="date"> Date: </label>
+                <input type="date" name="" id="date">
+              </div>
+              <div>
+                <label for="title"> Title: </label>
+                <input type="text" name="" id="title">
+              </div>
+              <div>
+                <label for="goal"> Episodes Goal: </label>
+                <input type="number" name="" id="goal" min="0" max="20">
+              </div>
+              <div>
+                <label for="watched"> Episodes Watched: </label>
+                <input type="number" name="" id="watched" min="0" max="20">
+              </div>
+              <div>
+                <label for="mood"> Mood: </label>
+                <select name="" id="mood">
+                  <option value="verySatisfied">😄 Very Satisfied</option>
+                  <option value="satisfied">😊 Satisfied</option>
+                  <option value="neutral">😐 Neutral</option>
+                  <option value="guilty">😔 Guilty</option>
+                  <option value="veryGuilty">😢 Very Guilty</option>
+                  </select>
+              </div>
+              <div>
+                <label for="entry">Write Entry:</label>
+                <input type="text" name="" id="entry" oninput="limitWords(this, 50)" minlength="0" maxlength="200">              
+              </div>
+            </div>
+            </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
