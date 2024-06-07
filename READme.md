@@ -9,7 +9,7 @@
 
 ## Limitations
 
-![Screenshot of home page figma] (/images/home-main.png)
+![Screenshot of home page figma](/images/home-main.png)
 
 ## Acknowledgements
 
