@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             userInfo.innerHTML += createElement; // Append the created element to the table
         });
     }
-
+       
     // Function to delete user information
     window.deleteInfo = function(index) {
         if (confirm("Are you sure you want to delete?")) {
