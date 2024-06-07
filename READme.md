@@ -2,7 +2,7 @@
 Track My Shows is a straightforward single-page application designed to help users track their series watch time. Users can set goals for the number of episodes they intend to watch and then log their actual watch time. Additionally, they can reflect on their viewing experience by selecting a mood and writing a short entry for each session. This app aims to encourage intentional watching or binge-watching sessions. It's built using HTMl, Javascript, CSS and local storage.
 
 ### Version Control
-This project uses git and github for managing significant changes. Here is the github repo link: 
+This project uses git and github for managing significant changes. Here is the github repo link: [](https://github.com/gabybong/gbon0058-A3tracker.git)
 
 ## Features
 - Overview table to display all tracked data with edit and delete buttons for managing entries.
@@ -10,7 +10,7 @@ This project uses git and github for managing significant changes. Here is the g
 - Goal setting for the number of episodes to watch and logging of actual watch time for comparison.
 
 ## Usage
-1. Preview the page using github
+1. Preview the page using github, [](https://github.com/gabybong/gbon0058-A3tracker.git)
 2. Open the index.html file in your web browser
 
 Start tracking by clicking on " + Log Watch Session ". If you want to edit and come back, click the pencil button. If you want to delete the entry, click the bin button.
