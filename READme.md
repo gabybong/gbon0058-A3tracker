@@ -17,6 +17,11 @@
 ## Acknowledgements
 
 ### Sources
-Libraries and APIS
+**Libraries**
+- Bootstrap 5.3.3
+- Bootstrap Icons 1.11.3
+**Figma Plugins**
+  - Google Symbols. Material Symbols.
+  - Gary McFarland. Table Creater.
 
 ### AI usage acknowledgements
